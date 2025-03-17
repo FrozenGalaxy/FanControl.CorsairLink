@@ -11,7 +11,7 @@ public static class HardwareIds
     public static readonly int CorsairH80iGTv2ProductId = 0x0c08;
     public static readonly int CorsairH100iGTv2ProductId = 0x0c09;
     public static readonly int CorsairH110iGTv2ProductId = 0x0c0a;
-    public static readonly int CorsairCommanderProProductId = 0x0c10;
+    public static readonly int CorsairCommanderProProductId = 0x0;
     public static readonly int CorsairHydroH150iProProductId = 0x0c12;
     public static readonly int CorsairHydroH115iProProductId = 0x0c13;
     public static readonly int CorsairOneProductId = 0x0c14;
@@ -20,17 +20,17 @@ public static class HardwareIds
     public static readonly int CorsairHydroH115iPlatinumProductId = 0x0c17;
     public static readonly int CorsairHydroH100iPlatinumProductId = 0x0c18;
     public static readonly int CorsairHydroH100iPlatinumSEProductId = 0x0c19;
-    public static readonly int CorsairCommanderCoreProductId = 0x0c1c;
+    public static readonly int CorsairCommanderCoreProductId = 0x0;
     public static readonly int CorsairHydroH100iProXTProductId = 0x0c20;
     public static readonly int CorsairHydroH115iProXTProductId = 0x0c21;
     public static readonly int CorsairHydroH150iProXTProductId = 0x0c22;
     public static readonly int CorsairHydroH60iProXTProductId = 0x0c29;
-    public static readonly int CorsairCommanderCoreXTProductId = 0x0c2a;
+    public static readonly int CorsairCommanderCoreXTProductId = 0x0;
     public static readonly int CorsairHydroH100iProXT2ProductId = 0x0c2d;
     public static readonly int CorsairHydroH115iProXT2ProductId = 0x0c2e;
     public static readonly int CorsairHydroH150iProXT2ProductId = 0x0c2f;
     public static readonly int CorsairHydroH60iProXT2ProductId = 0x0c30;
-    public static readonly int CorsairCommanderCore2022ProductId = 0x0c32;
+    public static readonly int CorsairCommanderCore2022ProductId = 0x0;
     public static readonly int CorsairHydroH60iEliteProductId = 0x0c34;
     public static readonly int CorsairHydroH100iEliteBlackProductId = 0x0c35;
     public static readonly int CorsairHydroH115iEliteProductId = 0x0c36;
@@ -59,7 +59,7 @@ public static class HardwareIds
     public static readonly int CorsairPsuAX1300iProductId = 0x1c10;
     public static readonly int CorsairPsuAX1600iProductId = 0x1c11;
     public static readonly int CorsairPsuHX1200i2023ProductId = 0x1c23;
-    public static readonly int CorsairObsidian1000DCommanderProProductId = 0x1d00;
+    public static readonly int CorsairObsidian1000DCommanderProProductId = 0x0;
 
     public static class DeviceDriverGroups
     {
