@@ -17,26 +17,20 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.x
-
+  
     - name: Download FanControl Plugins DLL
       shell: pwsh
       run: |
         Invoke-WebRequest https://github.com/Rem0o/FanControl.Releases/raw/refs/heads/master/FanControl.zip -OutFile fancontrol.zip
         Expand-Archive fancontrol.zip -DestinationPath fancontrol
-    
-        New-Item -ItemType Directory -Force -Path lib\FanControl | Out-Null
-        Copy-Item fancontrol\FanControl.Plugins.dll lib\FanControl\FanControl.Plugins.dll
+        New-Item -ItemType Directory -Force -Path ref | Out-Null
+        Copy-Item fancontrol\FanControl.Plugins.dll ref\FanControl.Plugins.dll
 
     - name: Restore solution
       run: dotnet restore src/FanControl.CorsairLink.sln
 
     - name: Build solution (Release)
-      shell: pwsh
-      run: |
-        $dll = Resolve-Path lib\FanControl\FanControl.Plugins.dll
-    
-        dotnet build src/FanControl.CorsairLink.sln -c Release --no-restore `
-          /p:Reference="FanControl.Plugins=$dll"
+      run: dotnet build src/FanControl.CorsairLink.sln -c Release --no-restore
 
     - name: Run tests
       run: dotnet test src/FanControl.CorsairLink.sln -c Release --no-build
