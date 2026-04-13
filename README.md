@@ -18,6 +18,7 @@ The unofficial CorsairLink plugin for [Fan Control](https://github.com/Rem0o/Fan
 | Commander CORE XT              | `0c2a`     | CommanderCore  | Full Support <sup>1,2</sup>       | ✅                                | ✅                                | ✅                                |
 | Commander CORE                 | `0c1c`     | CommanderCore  | Full Support <sup>1,2</sup>       | ✅                                | ✅ <sup>10</sup>                  | ✅                                |
 | Commander CORE (2022)          | `0c32`     | CommanderCore  | Full Support <sup>1,2</sup>       | ✅                                | ✅ <sup>10</sup>                  | ✅                                |
+| Commander DUO (ARGB Mode)      | `0c56`     | CommanderCore  | Full Support <sup>1,2</sup>       | ✅                                | ✅ <sup>10</sup>                  | ✅                                |
 | Commander Mini                 | `0c04(3d)` | Coolit         | Full Support <sup>1</sup>         | ✅                                | ✅                                | ✅                                |
 | Hydro H60i Elite               | `0c34`     | HydroPlatinum  | Full Support <sup>1,2</sup>       | ✅                                | ✅ <sup>4</sup>                   | ✅ <sup>5</sup>                   |
 | Hydro H60i Pro XT              | `0c29`     | HydroPlatinum  | Full Support <sup>1,2</sup>       | ✅                                | ✅ <sup>4</sup>                   | ✅ <sup>5</sup>                   |
@@ -101,7 +102,7 @@ The unofficial CorsairLink plugin for [Fan Control](https://github.com/Rem0o/Fan
    | HXi/RMi   | 30%       |
    | AXi       | 15%       |
 
-   For v1.8.0 and above, the minimum duty is replaced with a user-customizable zero-RPM duty threshold. When the fan power drops below the threshold, control of the fan will be returned to the PSU allowing zero-RPM operation. When the fan power is at or above the threshold, control of the fan will be returned to Fan Control. The default threshold duties are unchanged from the minimum duties used in previous versions (see table above). The threshold may instead be customized by setting the `FANCONTROL_CORSAIRLINK_PSU_ZERO_RPM_DUTY` [environment variable](#configuration) to the desired threshold percentage and restarting Fan Control.
+   For v1.8.0 and above, the minimum duty is replaced with a user-customizable zero-RPM duty threshold. When the fan power drops below the threshold, control of the fan will be returned to the PSU allowing zero-RPM operation. When the fan power is at or above the threshold, control of the fan will be returned to Fan Control. The default threshold duties are unchanged from the minimum duties used in previous versions (see table above). The threshold may instead be customized by setting the `FANCONTROL_CORSAIRLINK_PSU_ZERO_RPM_DUTY` [environment variable](#configuration) to the desired threshold percentage and restarting Fan Control. Additionally, disabling the control in Fan Control will signal the PSU to enter automatic/zero-RPM mode.
 
 7. The LibreHardwareMonitor "PSU (Corsair)" sensor source must be disabled in Fan Control's Sensor Settings.
 
@@ -137,6 +138,7 @@ Support for the iCUE LINK Hub was added in v1.5.0. The following LINK devices ar
 | XC7 (Stealth Gray)       | `09`       | `00`         | Full Support | n/a               | n/a                | ✅               |
 | XC7 (White)              | `09`       | `01`         | Full Support | n/a               | n/a                | ✅               |
 | XG3                      | `0a`       | `00`         | Full Support | ✅                | ✅                 | ✅               |
+| HXi SHIFT PSU            | `0b`       | `00`-`02`    | Full Support | ✅                | ✅                 | ✅               |
 | XD5 (Stealth Gray)       | `0c`       | `00`         | Full Support | ✅                | ✅ <sup>1</sup>    | ✅               |
 | XD5 (White)              | `0c`       | `01`         | Full Support | ✅                | ✅ <sup>1</sup>    | ✅               |
 | RX RGB Fan               | `0f`       | `00`         | Full Support | ✅                | ✅                 | n/a              |
@@ -145,6 +147,7 @@ Support for the iCUE LINK Hub was added in v1.5.0. The following LINK devices ar
 | RX Fan                   | `13`       | `00`         | Full Support | ✅                | ✅                 | n/a              |
 | XD6 (Stealth Gray)       | `19`       | `00`         | Full Support | ✅                | ✅ <sup>1</sup>    | ✅               |
 | XD6 (White)              | `19`       | `01`         | Full Support | ✅                | ✅ <sup>1</sup>    | ✅               |
+| COMMANDER DUO            | `1b`       | `00`         | Full Support | ✅                | ✅                 | ✅               |
 
 Don't see your device listed? Open an [issue](https://github.com/EvanMulawski/FanControl.CorsairLink/issues) and provide a USB packet capture.
 
