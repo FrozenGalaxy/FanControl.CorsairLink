@@ -25,7 +25,10 @@ jobs:
         Expand-Archive fancontrol.zip -DestinationPath fancontrol
         New-Item -ItemType Directory -Force -Path ref | Out-Null
         Copy-Item fancontrol\FanControl.Plugins.dll ref\FanControl.Plugins.dll
-
+        
+    - name: Add Unsafe dependency for tests
+      run: dotnet add test/CorsairLink.Tests/CorsairLink.Tests.csproj package System.Runtime.CompilerServices.Unsafe
+      
     - name: Restore solution
       run: dotnet restore src/FanControl.CorsairLink.sln
 
