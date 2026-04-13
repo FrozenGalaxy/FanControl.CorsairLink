@@ -41,9 +41,9 @@ jobs:
     - name: Publish merged plugin
       shell: pwsh
       run: |
-        $src = "src/FanControl.CorsairLink/bin/Release/net48/FanControl.CorsairLink.merged.dll"
+        $src = "src/FanControl.CorsairLink/bin/Release/net10.0/FanControl.CorsairLink.merged.dll"
         if (!(Test-Path $src)) { throw "Merged DLL not found: $src" }
-
+    
         New-Item -ItemType Directory -Force -Path publish | Out-Null
         Copy-Item $src publish/FanControl.CorsairLink.dll
 
