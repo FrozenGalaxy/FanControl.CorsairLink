@@ -38,9 +38,14 @@ jobs:
     - name: Run tests
       run: dotnet test src/FanControl.CorsairLink.sln -c Release --no-build
 
-    # This pulls in ALL referenced projects into one output
-    - name: Publish full plugin bundle (net48)
-      run: dotnet publish src/FanControl.CorsairLink/FanControl.CorsairLink.csproj -c Release -f net48 -o publish
+    - name: Publish merged plugin
+      shell: pwsh
+      run: |
+        $src = "src/FanControl.CorsairLink/bin/Release/net48/FanControl.CorsairLink.merged.dll"
+        if (!(Test-Path $src)) { throw "Merged DLL not found: $src" }
+
+        New-Item -ItemType Directory -Force -Path publish | Out-Null
+        Copy-Item $src publish/FanControl.CorsairLink.dll
 
     - name: Upload artifact
       uses: actions/upload-artifact@v4
