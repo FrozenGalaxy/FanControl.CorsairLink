@@ -19,11 +19,13 @@ jobs:
         dotnet-version: 8.0.x
 
     - name: Download FanControl Plugins DLL
+      shell: pwsh
       run: |
-        curl -L -o fancontrol.zip https://github.com/Rem0o/FanControl.Releases/releases/latest/download/FanControl.zip
-        tar -xf fancontrol.zip
-        mkdir lib\FanControl
-        copy FanControl\FanControl.Plugins.dll lib\FanControl\
+        Invoke-WebRequest https://github.com/Rem0o/FanControl.Releases/raw/refs/heads/master/FanControl.zip -OutFile fancontrol.zip
+        Expand-Archive fancontrol.zip -DestinationPath fancontrol
+    
+        New-Item -ItemType Directory -Force -Path lib\FanControl | Out-Null
+        Copy-Item fancontrol\FanControl.Plugins.dll lib\FanControl\FanControl.Plugins.dll
 
     - name: Restore solution
       run: dotnet restore src/FanControl.CorsairLink.sln
