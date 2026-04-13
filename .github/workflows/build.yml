@@ -39,8 +39,8 @@ jobs:
       run: dotnet test src/FanControl.CorsairLink.sln -c Release --no-build
 
     # This pulls in ALL referenced projects into one output
-    - name: Publish full plugin bundle
-      run: dotnet publish src/FanControl.CorsairLink/FanControl.CorsairLink.csproj -c Release -o publish
+    - name: Publish full plugin bundle (net48)
+      run: dotnet publish src/FanControl.CorsairLink/FanControl.CorsairLink.csproj -c Release -f net48 -o publish
 
     - name: Upload artifact
       uses: actions/upload-artifact@v4
