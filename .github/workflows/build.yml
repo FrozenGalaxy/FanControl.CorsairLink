@@ -18,10 +18,10 @@ jobs:
       with:
         dotnet-version: 8.0.x
   
-    - name: Download FanControl Plugins DLL
+    - name: Download FanControl Plugins DLL (net10)
       shell: pwsh
       run: |
-        Invoke-WebRequest https://github.com/Rem0o/FanControl.Releases/raw/refs/heads/master/FanControl.zip -OutFile fancontrol.zip
+        Invoke-WebRequest https://github.com/Rem0o/FanControl.Releases/releases/latest/download/FanControl_265_net_10_0.zip -OutFile fancontrol.zip
         Expand-Archive fancontrol.zip -DestinationPath fancontrol
         New-Item -ItemType Directory -Force -Path ref | Out-Null
         Copy-Item fancontrol\FanControl.Plugins.dll ref\FanControl.Plugins.dll
