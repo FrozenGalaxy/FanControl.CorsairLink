@@ -1,0 +1,38 @@
+name: Build & Publish Full Output
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+
+    - name: Restore solution
+      run: dotnet restore src/FanControl.CorsairLink.sln
+
+    - name: Build solution (Release)
+      run: dotnet build src/FanControl.CorsairLink.sln -c Release --no-restore
+
+    - name: Run tests
+      run: dotnet test src/FanControl.CorsairLink.sln -c Release --no-build
+
+    # This pulls in ALL referenced projects into one output
+    - name: Publish full plugin bundle
+      run: dotnet publish src/FanControl.CorsairLink/FanControl.CorsairLink.csproj -c Release -o publish /p:PublishTrimmed=true /p:TrimMode=partial
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: CorsairLinkPlugin-Full
+        path: publish
