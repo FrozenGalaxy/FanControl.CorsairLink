@@ -33,8 +33,10 @@ jobs:
     - name: Build solution (Release)
       shell: pwsh
       run: |
-        $refPath = Resolve-Path lib\FanControl
-        dotnet build src/FanControl.CorsairLink.sln -c Release --no-restore /p:ReferencePath=$refPath
+        $dll = Resolve-Path lib\FanControl\FanControl.Plugins.dll
+    
+        dotnet build src/FanControl.CorsairLink.sln -c Release --no-restore `
+          /p:Reference="FanControl.Plugins=$dll"
 
     - name: Run tests
       run: dotnet test src/FanControl.CorsairLink.sln -c Release --no-build
